@@ -25,7 +25,7 @@ labels = {0: 'angry', 1: 'disgust', 2: 'fear', 3: 'happy', 4: 'neutral', 5: 'sad
 # Iterate through images in the directory
 for filename in os.listdir(image_directory):
     if filename.endswith(".jpg") or filename.endswith(".png"):  # Add other formats if needed
-        image_path = os.path.join(image_directory, 'Group.jpg')
+        image_path = os.path.join(image_directory, filename)  # Use filename instead of 'Group.jpg'
         im = cv2.imread(image_path)
 
         if im is None:
@@ -45,5 +45,8 @@ for filename in os.listdir(image_directory):
 
         cv2.imshow(f"Output - {filename}", im)
         cv2.waitKey(0)  # Wait for key press to close each image window
+
+        # Stop the loop after the first image
+        break  # This will break out of the loop after the first image
 
 cv2.destroyAllWindows()
